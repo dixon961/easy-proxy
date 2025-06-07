@@ -8,8 +8,8 @@ services:
     container_name: vless-proxy
     environment:
       X_UI_LINK: ""
-      PROXY_USER: ""
-      PROXY_PASS: ""
+      PROXY_USER: "" # optional
+      PROXY_PASS: "" # optional
     ports:
       - "1080:1080"   # SOCKS5
       - "3128:3128"   # HTTP
