@@ -169,8 +169,6 @@ cat > /etc/xray/config.json <<EOF
 }
 EOF
 
-# echo "[*] Generated config:"
-# cat /etc/xray/config.json # For debugging, you might want to remove this in production
 
 echo "[*] Starting Xray..."
 exec xray run -config /etc/xray/config.json
