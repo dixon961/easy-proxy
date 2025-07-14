@@ -150,22 +150,33 @@ cat > /etc/xray/config.json <<EOF
     }
   ],
   "routing": {
-        "domainStrategy": "IPIfNonMatch",
-        "rules": [
-            {
-                "type": "field",
-                "ip": [
-                    "geoip:private"
-                ],
-                "outboundTag": "direct"
-            },
-            {
-              "type": "field",
-              "ip": ["0.0.0.0/0", "::/0"],
-              "outboundTag": "proxy"
-            }
-        ]
-    }
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "domain": [
+          "localhost"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "ip": [
+          "127.0.0.1/32",
+          "geoip:private"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "ip": [
+          "0.0.0.0/0",
+          "::/0"
+        ],
+        "outboundTag": "proxy"
+      }
+    ]
+  }
 }
 EOF
 
