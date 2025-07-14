@@ -147,6 +147,17 @@ cat > /etc/xray/config.json <<EOF
     {
         "protocol": "freedom",
         "tag": "direct"
+    },
+    {
+        "protocol": "freedom",
+        "tag": "local_requests",
+        "settings": {
+          "destinationOverride": {
+            "server": {
+              "address": "host.docker.internal"
+            }
+          }
+        }
     }
   ],
   "routing": {
@@ -154,15 +165,17 @@ cat > /etc/xray/config.json <<EOF
     "rules": [
       {
         "type": "field",
-        "domain": [
-          "localhost"
-        ],
-        "outboundTag": "direct"
+        "domain": ["localhost"],
+        "outboundTag": "local_requests"
+      },
+      {
+        "type": "field",
+        "ip": ["127.0.0.1/32"],
+        "outboundTag": "local_requests"
       },
       {
         "type": "field",
         "ip": [
-          "127.0.0.1/32",
           "geoip:private"
         ],
         "outboundTag": "direct"
