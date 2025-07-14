@@ -13,3 +13,5 @@ services:
     ports:
       - "1080:1080"   # SOCKS5
       - "3128:3128"   # HTTP
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
