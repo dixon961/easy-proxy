@@ -57,7 +57,7 @@ echo "---------------------------------------------------------------------"
 # docker-compose build will use the 'image:' tag specified in the docker-compose.yml
 # for the service being built.
 echo "[*] Building the Docker image for service '${SERVICE_NAME_IN_COMPOSE}' which will be tagged as '${FULL_IMAGE_NAME}'..."
-docker-compose build "${SERVICE_NAME_IN_COMPOSE}"
+docker compose build "${SERVICE_NAME_IN_COMPOSE}"
 
 # Note: An explicit 'docker tag' command is NOT needed here because:
 # 1. You've set the 'image: FULL_IMAGE_NAME' in your docker-compose.yml.
