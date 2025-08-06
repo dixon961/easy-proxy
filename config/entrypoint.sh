@@ -29,7 +29,7 @@ if [ -n "$X_UI_LINK" ]; then
     FP=$(echo "$PARAMS" | tr '&' '\n' | grep '^fp=' | cut -d= -f2)
     SNI=$(echo "$PARAMS" | tr '&' '\n' | grep '^sni=' | cut -d= -f2)
     SID=$(echo "$PARAMS" | tr '&' '\n' | grep '^sid=' | cut -d= -f2)
-    SPX=$(echo "$PARAMS" | grep '&spx=' | cut -d'=' -f2 | sed 's/%2F/\//g')
+    SPX=$(echo "$PARAMS" | tr '&' '\n' | grep '^spx=' | cut -d= -f2 | sed 's/%2F/\//g')
     FLOW=$(echo "$PARAMS" | tr '&' '\n' | grep '^flow=' | cut -d= -f2)
 
     echo "[*] VLESS Parsed:"
